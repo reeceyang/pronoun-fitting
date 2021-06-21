@@ -22,7 +22,7 @@ async function main() {
   var pronouns = {};
   for (const i in PROMPTS) {
     print("<br>what is your ",PROMPTS[i][0],"?  ");
-    pronouns[PROMPTS[i][0]] = await input(PROMPTS[i][1] === "" ? "" : "<br>(example - " + PROMPTS[i][1] + "): ");
+    pronouns[PROMPTS[i][0]] = String(await input(PROMPTS[i][1] === "" ? "" : "<br>(example - " + PROMPTS[i][1] + "): ")).toLowerCase();
   }
   var plural = await input("<br>plural or singular? <br>(example - <i>plural</i>: they have a book. <i>singular</i>: he has a book.): ") === "plural";
   println(!plural ? `<br>hello! today I met a ${pronouns["type of person"]} who goes by ${pronouns["name"]}. ${pronouns["subject pronoun"]} has a wonderful personality. that smile of ${pronouns["possessive pronoun"]} really makes me happy. I could talk to ${pronouns["object pronoun"]} all day although ${pronouns["subject pronoun"]} doesn't talk about much. I wonder if ${pronouns["possessive determiner"]} day has been wonderful. I hope so!` : `<br>hello! today I met a ${pronouns["type of person"]} who goes by ${pronouns["name"]}. ${pronouns["subject pronoun"]} have a wonderful personality. that smile of ${pronouns["possessive pronoun"]} really makes me happy. I could talk to ${pronouns["object pronoun"]} all day although ${pronouns["subject pronoun"]} don't talk about much. I wonder if ${pronouns["possessive determiner"]} day has been wonderful. I hope so!`);
